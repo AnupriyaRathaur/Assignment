@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        /* Center content */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        img {
+            width: 300px;
+            height: 200px;
+            border-radius: 10px; /* Optional: adds rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: adds shadow */
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img id="slider" src="image/box5_image.jpg">
+        <div class="buttons">
+            <button onclick="prevImage()">Previous</button>
+            <button onclick="nextImage()">Next</button>
+        </div>
+    </div>
+
+    <script>
+        let image = ["image/box5_image.jpg", "image/box6_image.jpg", "image/box7_image.jpg"];
+        let index = 0;
+
+        function showImage() {
+            document.getElementById("slider").src = image[index];
+        }
+
+        function nextImage() {
+            index = (index + 1) % image.length;
+            showImage();
+        }
+
+        function prevImage() {
+            index = (index - 1 + image.length) % image.length;
+            showImage();
+        }
+
+        // Ensure the first image is displayed on page load
+        window.onload = function() {
+            showImage();
+        };
+    </script>
+
+</body>
+</html>
